@@ -7,7 +7,7 @@ public class Tarea3 {
 	public static void main(String[] args) {
 
 		WeatherLikeCity test = new WeatherLikeCity();
-		String city = "Fes";
+		String city = "Guadalajara";
 		String units = WeatherLikeCity.UNITS_METRIC;
 		
 		Collection<Item> weather = test.getWeather(city, units);

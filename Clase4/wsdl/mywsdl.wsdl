@@ -1,0 +1,72 @@
+<definitions name="SumatoriaNadia"  
+   targetNamespace="http://www.nadia.com/wsdl/Sumatoria.wsdl"  
+   xmlns="http://schemas.xmlsoap.org/wsdl/"  
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"  
+   xmlns:tns="http://www.nadia.com/wsdl/Sumatoria.wsdl"  
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">  
+   
+   <message name="Suma1Request">  
+      <part name="x" type="xsd:int"/>  
+      <part name="y" type="xsd:int"/>  
+   </message>  
+   <message name="Suma1Response">
+   	<part name="suma" type="xsd:int"></part></message><message name="Suma2Request">  
+      <part name="x" type="xsd:double"></part>
+      <part name="y" type="xsd:double"></part>
+   </message>  
+  
+   <message name="Suma2Response">
+   	<part name="suma" type="xsd:double"></part></message><portType name="sumaPortType">  
+      <operation name="Suma1">  
+         <input message="tns:Suma1Request"/>  
+         <output message="tns:Suma1Request"/>  
+      </operation>
+      <operation name="Suma2">
+      	<input message="tns:Suma2Request"></input>
+      	<output message="tns:Suma2Response"></output></operation>
+</portType>  
+  
+   <binding name="sumaBinding" type="tns:sumaPortType">  
+   <soap:binding style="rpc"  
+      transport="http://schemas.xmlsoap.org/soap/http"/>  
+   <operation name="Suma1">  
+      <soap:operation soapAction="Suma1"/>  
+      <input>  
+         <soap:body  
+            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"  
+            namespace="urn:examples:sumasservice"  
+            use="encoded"/>  
+      </input>  
+      <output>  
+         <soap:body  
+            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"  
+            namespace="urn:nadia:sumaservice"  
+            use="encoded"/>  
+      </output>  
+   </operation>
+   <operation name="Suma2">  
+      <soap:operation soapAction="Suma2"/>  
+      <input>  
+         <soap:body  
+            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"  
+            namespace="urn:examples:sumasservice"  
+            use="encoded"/>  
+      </input>  
+      <output>  
+         <soap:body  
+            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"  
+            namespace="urn:nadia:sumaservice"  
+            use="encoded"/>  
+      </output>  
+   </operation>
+   </binding>  
+  
+   <service name="Suma_Service">  
+      <documentation>WSDL File for Suma_Service</documentation>  
+      <port binding="tns:sumaPort" name="Suma_Port">  
+         <soap:address  
+            location="http://www.nadia.com/Sumatoria/">  
+      </port>  
+   </service>
+   
+</definitions>  
