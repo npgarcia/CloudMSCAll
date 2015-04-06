@@ -1,0 +1,9 @@
+CREATE KEYSPACE soapintegration WITH REPLICATION = {'class':'SimpleStrategy','replication_factor':1} ;
+
+USE soapintegration;
+CREATE COLUMNFAMILY users (userName text PRIMARY KEY, id double, password text, isMale boolean, longitude double, latitude double, yearOfBirth int);
+
+CREATE COLUMNFAMILY wishes (id double PRIMARY KEY, userId double, expireDate timestamp, wishName text);
+CREATE INDEX ON wishes (userId);
+
+INSERT INTO users (id, userName, password, isMale, longitude, latitude, yearOfBirth) VALUES (9876, 'ngarcia', '1234npgc', false, 123.456, 543.904, 1985) ;
