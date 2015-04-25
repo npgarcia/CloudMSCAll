@@ -46,45 +46,46 @@ public class Client {
 			/*
 			 * TEST NEW USER INSERT
 			 */
-			EndUser user = new EndUser(new Date().getTime(), "newUser1", "th1s1s,yp4ssw0rd",
-					false, (double) 13234.123, (double) 12345.09, 1985);
-			catalogo.insertNewUser(user);
+//			EndUser user = new EndUser(new Date().getTime(), "newUser1", "th1s1s,yp4ssw0rd",
+//					false, (double) 13234.123, (double) 12345.09, 1985);
+//			catalogo.insertNewUser(user);
 
 			/*
 			 * TEST IF A USER CAN BE FOUND AND INSERT WISHES
 			 */
-			// EndUser user = catalogo.signIn("ngarcia", "1234pass");
-			// if (user != null)
-			// System.out.println(user.toString());
-			// else
-			// System.out.println("user/password mismatch");
-			//
-			// SimpleDateFormat sdf = new
-			// SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-			//
-			// try {
-			// catalogo.insertWish(user.getId(), new Wish(
-			// new Date().getTime(), sdf.parse("31-08-1982 10:20:56"),
-			// "this is my wish so I can take a screenshot!"));
-			//
-			// } catch (Exception e) { // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
+//			 EndUser user = catalogo.signIn("ngarcia", "1234pass");
+//			 if (user != null)
+//			 System.out.println(user.toString());
+//			 else
+//			 System.out.println("user/password mismatch");
+//			
+//			 SimpleDateFormat sdf = new
+//			 SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+//			
+//			 try {
+//			 catalogo.insertWish(user.getId(), new Wish(
+//			 new Date().getTime(), sdf.parse("31-08-1982 10:20:56"),
+//			 "this is my wish so I can test from AWS!"));
+//			
+//			 } catch (Exception e) { // TODO Auto-generated catch block
+//			 e.printStackTrace();
+//			 }
 
 			/*
 			 * TEST IF A USER CAN BE FOUND AND GET WISHES
 			 */
-			// EndUser user = catalogo.signIn("ngarcia", "1234pass");
-			// if (user != null)
-			// System.out.println(user.toString());
-			// else
-			// System.out.println("user/password mismatch");
-			//
-			// List<Wish> myWishes = catalogo.getUserWishList(user.getId());
-			//
-			// for (Wish w : myWishes) {
-			// System.out.println(w.toString());
-			// }
+			 EndUser user = catalogo.signIn("ngarcia", "1234pass");
+			 if (user != null)
+			 System.out.println(user.toString());
+			 else
+			 System.out.println("user/password mismatch");
+			
+			 List<Wish> myWishes = catalogo.getUserWishList(1234.0);
+			 System.out.println("Wishes: "+myWishes.size());
+			
+			 for (Wish w : myWishes) {
+			 System.out.println(w.toString());
+			 }
 
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block

@@ -2,14 +2,10 @@ package ws.msc.promotionsBusiness;
 
 import java.awt.Image;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.jws.WebService;
@@ -32,38 +28,9 @@ public class EndUserCatalogImpl implements EndUserCatalogInterface {
 	String path;
 
 	public EndUserCatalogImpl() {
-		Properties prop = new Properties();
-		InputStream input = null;
-		String node;
-		String keyspace;
-		int port;
-
-		try {
-
-			input = new FileInputStream("config.properties");
-
-			// load a properties file
-			prop.load(input);
-
-			// get the property value and print it out
-			node = prop.getProperty("cassandra.ip");
-			port = Integer.parseInt(prop.getProperty("cassandra.port"));
-			keyspace = prop.getProperty("cassandra.keyspace");
-			path = prop.getProperty("app.path");
-
-			connector.connect(node, port, keyspace);
-
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} finally {
-			if (input != null) {
-				try {
-					input.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		
+		connector.connect();
+		
 	}
 
 	@Override
@@ -166,7 +133,7 @@ public class EndUserCatalogImpl implements EndUserCatalogInterface {
 
 			return wishes;
 		} else {
-
+			System.out.println(userId + " IS NOT AN ACTIVE USER");
 			return null;
 		}
 	}

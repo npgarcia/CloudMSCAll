@@ -1,4 +1,4 @@
-package msc.cassandra.operations;
+package cassandra;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Host;
@@ -26,15 +26,13 @@ public class CassandraConnector {
 	 * @param port
 	 *            Port of cluster host.
 	 */
-	public void connect() {
+	public void connect(String keyspace) {
 
 		String node = "";
-		String keyspace = "";
 		int port = 0;
 
 		node = "54.165.43.110";
 		port = 9042;
-		keyspace = "soapintegration";
 
 		if (session == null) {
 			System.out.println("Data for DEBUG: " + node + ":" + port
@@ -48,7 +46,7 @@ public class CassandraConnector {
 				out.printf("Datacenter: %s; Host: %s; Rack: %s\n",
 						host.getDatacenter(), host.getAddress(), host.getRack());
 			}
-			session.execute("USE " + keyspace);
+			session.execute("USE " + keyspace +";");
 		}
 	}
 
@@ -68,8 +66,6 @@ public class CassandraConnector {
 	}
 
 	public ResultSet execute(String query) {
-		if (session == null)
-			connect();
 		return this.session.execute(query);
 	}
 }

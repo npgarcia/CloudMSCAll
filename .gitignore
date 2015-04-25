@@ -32,3 +32,10 @@
 .classpath
 *.x86_64
 *.hex
+
+#Extras
+*.zip
+.idea/
+*.docx
+.metadata/
+*.jar
